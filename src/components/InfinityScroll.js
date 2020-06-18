@@ -1,0 +1,45 @@
+import React, {useEffect, useRef} from 'react';
+import MovieAttachedCardList from "./MovieAttachedCardList";
+import PropTypes from "prop-types";
+
+
+const InfinityScroll = ({movies, findItemsByPage, totalPages}) => {
+
+    let page = 1;
+    const containerRef = useRef();
+    const bottomRef = useRef();
+
+    useEffect(() => {
+        findItemsByPage(page);
+        const scroll = new IntersectionObserver(scrollCallBack, {
+            root: containerRef.current,
+            rootMargin: "400px"
+        });
+        scroll.observe(bottomRef.current);
+        return () => {
+            scroll.disconnect()
+        }
+    }, []);
+
+    const scrollCallBack = (entries) => {
+        if (entries[0].isIntersecting && page <= totalPages.current) {
+            setTimeout(() => {
+                page = page + 1;
+                findItemsByPage(page);
+            }, 500);
+        }
+    };
+
+    return (
+        <div className={"attached-grid"}>
+            <MovieAttachedCardList movies={movies} containerRef={containerRef} bottomRef={bottomRef} />
+        </div>
+    );
+}
+
+export default InfinityScroll;
+
+InfinityScroll.propTypes = {
+    movies : PropTypes.arrayOf(PropTypes.object),
+    findItemsByPage : PropTypes.func,
+};

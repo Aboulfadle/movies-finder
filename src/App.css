@@ -1,0 +1,335 @@
+.App {
+  text-align: center;
+}
+
+
+.autocomplete-wrapper {
+  width: 319px;
+  position: absolute;
+  top: 14px;
+  border: none;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.autocomplete-wrapper > div {
+  width: 100%;
+}
+
+.autocomplete-wrapper input {
+  border: none;
+  margin-bottom: 5px;
+  padding: 12px 15px;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.autocomplete-wrapper input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.dropdown a:hover {
+  text-decoration: none;
+}
+
+.autocomplete-wrapper .dropdown {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  text-align: left;
+  border-top: none;
+}
+
+.autocomplete-wrapper .item  {
+  display: block;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  padding: 8px 15px;
+  margin: 0;
+}
+
+.autocomplete-wrapper .item:hover {
+  color: #c4c3c3;
+}
+
+.autocomplete-wrapper input::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.autocomplete-wrapper input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.autocomplete-wrapper input::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+.autocomplete-wrapper input{
+  color: white;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #dc3545;
+}
+
+.attached-grid {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.attached-grid ul::-webkit-scrollbar {
+  /*display: none;*/
+}
+
+.attached-grid ul::-webkit-scrollbar-thumb {
+  /*display: none;*/
+}
+
+.attached-grid a {
+  height: 100% !important;
+
+}
+
+.attached-grid ul{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.attached-grid li{
+  height: 25% !important;
+}
+
+.attached-grid button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.pagination button {
+  color: rgba(0, 0, 0, 0.87);
+  height: 47px;
+  width: 48px;
+}
+
+.pagination button:focus {
+   outline: 0;
+}
+
+.pagination .MuiPagination-ul {
+  justify-content: left;
+}
+
+.loading-root {
+  width: calc(100% - 320px);
+  height: 100%;
+  top: 0;
+  position: fixed;
+  background: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: #c4c3c3 !important;
+}
+
+.header-routing-link:hover {
+  color: #939393;
+  text-decoration: none;
+}
+
+.category-link:hover {
+  text-decoration: none;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+#standard-start-adornment {
+  color: white;
+}
+
+.MuiListItemText-root:hover {
+  color: #adacac;
+}
+
+.button-cursor-pointer:hover {
+  cursor: pointer;
+  color: #b64550;
+}
+
+.makeStyles-headerRouting-5 .nav-link {
+  padding-bottom: 0;
+  padding-top: 5px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 5px;
+  width: 50px !important;
+  height: 50px !important;
+  z-index: 1;
+  color: #dc3545;
+  font-size: 100px;
+  right: 5px;
+}
+
+.modal-backdrop.show {
+  opacity: 0.9 !important;
+}
+
+.modal-content {
+  border: none;
+  background: transparent;
+}
+
+.view-details .btn-dark:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+  transition: .6s !important;
+}
+
+.trailer-image-overlay {
+  text-align: center;
+  padding: 25px 30px 0;
+  box-sizing: border-box;
+  opacity: 0;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right:0;
+  display: block;
+  z-index: 2
+}
+
+.view-details .btn-dark {
+  transition: .6s !important;
+}
+
+.overlay-title {
+  font-weight: bold;
+  line-height: 125%;
+}
+
+.overlay-description {
+  margin-top: -13px;
+  font-size: 13px;
+}
+
+
+.trailer-image-container:hover .trailer-image-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  opacity: 1;
+  transition: .6s;
+}
+
+#quickSearchId {
+  border-color: #000;
+}
+
+.main-control .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.main-card-image-title {
+  padding: 5px;
+  border: 1px solid #dc3545;
+  margin-bottom: 0;
+}
+
+.MuiButtonBase-root {
+  outline: none;
+}
+
+.siteContent {
+  width: calc(100% - 320px);
+  height: calc(100% + 50px);
+  float: right;
+  position: relative;
+}
+
+.topHeaderElement {
+  margin-right: 40px;
+}
+
+.topHeaderElement p{
+  margin-bottom: -2px;
+  font-weight: bold;
+}
+
+.movie-header-infos {
+  padding: 30px 50px 0;
+}
+
+.movie-header-infos h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin-bottom: -3px;
+}
+
+.header-background-container {
+  background-position: right -200px top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/images/jurassic-world-fallen-kingdom.jpg');
+}
+
+.movie-categories {
+  color: #ffffff;
+  padding: 4px 5px;
+  margin-right: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.movie-categories:hover {
+  transition: .5s;
+  color: #dc3545;
+  border-color: #dc3545;
+  text-decoration: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
