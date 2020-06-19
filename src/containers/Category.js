@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
 import MovieCardList from "../components/MovieCardList";
 import Pagination from "@material-ui/lab/Pagination";
 import CommonTitle from "../components/CommonTitle";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMoviesByGenre} from "../redux/actions/movies.action";
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,9 +32,9 @@ const useStyles = makeStyles(theme => ({
 
 const Category = ({categoryId, categoryName}) => {
 
-    const [totalPages, setTotalPages] = useState(0);
     const classes = useStyles();
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    const { movies, totalPages } = useSelector(state => state.moviesStore);
 
     const handleCategoryPageChange = page => {
         window.scrollTo({
@@ -42,19 +42,15 @@ const Category = ({categoryId, categoryName}) => {
             left: 0,
             behavior: 'smooth'
         });
-        findItemsByCategory(categoryId, page);
+        findItemsByCategory(page, categoryId);
     };
 
     useEffect(() => {
-        handleCategoryPageChange(1);
-    }, [categoryId, categoryName]);
+        findItemsByCategory(1, categoryId);
+    }, [dispatch, categoryId]);
 
-    const findItemsByCategory = (categoryId, page) => {
-        axios.get(`${ApplicationConstant.BASE_URL}genre/${categoryId}/movies?api_key=${ApplicationConstant.API_KEY}&page=${page}`)
-            .then(response => {
-                setMovies(response.data.results);
-                setTotalPages(response.data.total_pages);
-            });
+    const findItemsByCategory = (page, categoryId) => {
+        dispatch(fetchMoviesByGenre(page, categoryId));
     }
 
     return (

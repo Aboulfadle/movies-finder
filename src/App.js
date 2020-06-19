@@ -8,6 +8,18 @@ import MoviePage from "./containers/MoviePage";
 import TopRated from "./containers/TopRated";
 import Upcoming from "./containers/Upcoming";
 import PopularMovies from "./containers/PopularMovies";
+import WebFont from 'webfontloader';
+
+
+WebFont.load({
+    google: {
+        families: [
+            'Titillium Web:300,400,700',
+            'sans-serif',
+            'Yanone+Kaffeesatz:wght@600'
+        ]
+    }
+});
 
 function App() {
   return (

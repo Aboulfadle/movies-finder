@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import MainSlider from "../components/MainSlider";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import Trailer from "../components/Trailer";
 import MovieCardList from "../components/MovieCardList";
-import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
 import CommonTitle from "../components/CommonTitle";
 import static_movies from "../static_data/static_movies";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovies} from "../redux/actions/movies.action";
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,14 +29,11 @@ const useStyles = makeStyles(theme => ({
 
 const HomePage = () => {
     const classes = useStyles();
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    const { movies } = useSelector(state => state.moviesStore);
     useEffect(() => {
-        axios.get(`${ApplicationConstant.BASE_URL}movie/now_playing?api_key=${ApplicationConstant.API_KEY}&language=en-US&page=1`)
-            .then(response => {
-                console.log(response.data);
-                 setMovies(response.data.results.slice(0, 8))
-            });
-    }, []);
+        dispatch(fetchMovies(1, "now_playing"));
+    }, [dispatch]);
 
     return (
         <>
@@ -55,7 +52,7 @@ const HomePage = () => {
 
             <CommonTitle title={"Now playing movies"} />
             <div className={classes.rootGridContainer}>
-                <MovieCardList movies={movies}/>
+                <MovieCardList movies={movies.slice(0,12)}/>
             </div>
         </>
     );

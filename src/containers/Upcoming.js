@@ -1,27 +1,24 @@
-import React, {useRef, useState} from 'react';
-import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
+import React, {useRef} from 'react';
 import InfinityScroll from "../components/InfinityScroll";
+import {fetchMovies} from "../redux/actions/movies.action";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const Upcoming = () => {
 
-    let totalPages = useRef(1);
-    let [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    const { movies } = useSelector(state => state.moviesStore);
+    const totalPagesRef = useRef(1);
 
     const findItemsByPage = (page) => {
-        axios.get(`${ApplicationConstant.BASE_URL}movie/upcoming?api_key=${ApplicationConstant.API_KEY}&page=${page}`)
-            .then(response => {
-                setMovies(prev => [...prev, ...response.data.results]);
-                totalPages.current = response.data.total_pages;
-            });
+        dispatch(fetchMovies(page, "upcoming", totalPagesRef));
     }
 
     return (
         <InfinityScroll
             movies={movies}
             findItemsByPage={findItemsByPage}
-            totalPages={totalPages}/>
+            totalPagesRef={totalPagesRef}/>
     );
 }
 

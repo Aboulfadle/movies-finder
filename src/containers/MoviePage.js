@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
+import {client} from "../client/client";
 import MovieHeader from "../components/MovieHeader";
 import ActorCardList from "../components/ActorCardList";
 import HdSharp from "@material-ui/icons/HdSharp";
 import PropTypes from "prop-types";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovieCasts, fetchMovieDetails} from "../redux/actions/movie.action";
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,18 +23,13 @@ const useStyles = makeStyles(theme => ({
 const MoviePage = ({movieId}) => {
 
     const classes = useStyles();
-    const [movie, setMovie] = useState({});
-    const [actors, setActors] = useState([]);
+    const {movie, actors} = useSelector(state => state.movieStore)
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.get(`${ApplicationConstant.BASE_URL}movie/${movieId}?language=en-US&api_key=${ApplicationConstant.API_KEY}`)
-            .then(response => setMovie(response.data));
-            axios.get(`${ApplicationConstant.BASE_URL}movie/${movieId}/credits?api_key=${ApplicationConstant.API_KEY}`)
-                .then(response => {
-                    console.log(response.data.cast)
-                    setActors(response.data.cast)
-                });
-    }, [movieId]);
+        dispatch(fetchMovieDetails(movieId));
+        dispatch(fetchMovieCasts(movieId));
+    }, [dispatch, movieId]);
 
     return (
         <div className={classes.root}>

@@ -1,11 +1,11 @@
 import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
+import {BASE_URL, API_KEY, LANGUAGE} from "../constants/ApplicationConstant";
 
 const resources = {};
 
 // The use case of resources, is to store result of old requests.
 // Sending requests every time when we update the input, can lead to an overload of requests, especially when we receive large responses.
-// so I use the 'cancel' to cancel the pending requests, and keep only the new one.
+// so I canceled the pending requests, before going for the new one.
 const search = () => {
     let cancel;
     return async (value) => {
@@ -17,7 +17,7 @@ const search = () => {
             if (resources[value]) {
                 return resources[value];
             }
-            const response = await axios(`${ApplicationConstant.BASE_URL}search/movie?query=${value}&language=en-US&api_key=${ApplicationConstant.API_KEY}`, {cancelToken: cancel.token}, []);
+            const response = await axios.get(`${BASE_URL}search/movie?query=${value}&language=${LANGUAGE}&api_key=${API_KEY}`, {cancelToken: cancel.token});
             const result = response.data.results;
             resources[value] = result;
             return result;

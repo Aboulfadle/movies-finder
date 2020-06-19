@@ -27,7 +27,8 @@ const ActorCard = ({ actor }) => {
                 <Card.Text className={classes.actorReelName}>
                     {actor.name.length <= 20 ? actor.name : actor.name.slice(0, 17) + '...'}
                 </Card.Text>
-                <Card.Text>{actor.character.length <= 24 ? actor.character : actor.character.slice(0, 21) + '...'}</Card.Text></Card.Body>
+                <Card.Text>{actor.character.length <= 24 ? actor.character : actor.character.slice(0, 21) + '...'}</Card.Text>
+            </Card.Body>
         </Card>
     );
 };

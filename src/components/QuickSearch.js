@@ -43,7 +43,7 @@ const QuickSearch = ({openQuickSearch, quickSearchHandler}) => {
     const [searchTextValue , setSearchTextValue] = useState('');
 
     const renderAutoCompleteItems = (item, isHighlighted) =>
-        <Link to={`/movie/${item.id}`}>
+        <Link to={`/movie/${item.id}`} key={item.id}>
             <div className={`item ${isHighlighted ? 'selected-item' : ''}`} key={item.id}>
                 {item.title}
             </div>
@@ -86,4 +86,7 @@ const QuickSearch = ({openQuickSearch, quickSearchHandler}) => {
 
 export default QuickSearch;
 
-QuickSearch.propTypes = {};
+QuickSearch.propTypes = {
+    openQuickSearch : PropTypes.bool,
+    quickSearchHandler : PropTypes.func
+};

@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import CloseIcon from '@material-ui/icons/Close';
 import {List, Drawer, ListItem, ListItemText} from "@material-ui/core/";
-import axios from "axios";
-import ApplicationConstant from "../constants/ApplicationConstant";
 import {Link} from "@reach/router";
 import PropTypes from "prop-types";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCategories} from "../redux/actions/categories.action";
 
 
 const useStyles = makeStyles(theme => ({
@@ -43,11 +43,12 @@ const useStyles = makeStyles(theme => ({
 
 const CategoriesLink = ({openCategories, categoriesHandler}) => {
     const classes = useStyles();
-    const [categories, setCategories] = useState([]);
+    const {categories} = useSelector(state => state.categoriesStore);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        axios.get(ApplicationConstant.BASE_URL + "genre/movie/list?api_key=" + ApplicationConstant.API_KEY)
-            .then(response => setCategories(response.data.genres));
-    }, []);
+        dispatch(fetchCategories());
+    }, [dispatch]);
 
     return (
         <Drawer transitionDuration={800} className={classes.drawer} variant="persistent" anchor="left" open={openCategories} classes={{paper: classes.drawerPaper}}>

@@ -3,7 +3,7 @@ import MovieAttachedCardList from "./MovieAttachedCardList";
 import PropTypes from "prop-types";
 
 
-const InfinityScroll = ({movies, findItemsByPage, totalPages}) => {
+const InfinityScroll = ({movies, findItemsByPage, totalPagesRef}) => {
 
     let page = 1;
     const containerRef = useRef();
@@ -11,6 +11,7 @@ const InfinityScroll = ({movies, findItemsByPage, totalPages}) => {
 
     useEffect(() => {
         findItemsByPage(page);
+
         const scroll = new IntersectionObserver(scrollCallBack, {
             root: containerRef.current,
             rootMargin: "400px"
@@ -19,14 +20,13 @@ const InfinityScroll = ({movies, findItemsByPage, totalPages}) => {
         return () => {
             scroll.disconnect()
         }
+
     }, []);
 
     const scrollCallBack = (entries) => {
-        if (entries[0].isIntersecting && page <= totalPages.current) {
-            setTimeout(() => {
-                page = page + 1;
-                findItemsByPage(page);
-            }, 500);
+        if (entries[0].isIntersecting && totalPagesRef.current && page <= totalPagesRef.current) {
+            page = page + 1;
+            findItemsByPage(page);
         }
     };
 
@@ -42,4 +42,5 @@ export default InfinityScroll;
 InfinityScroll.propTypes = {
     movies : PropTypes.arrayOf(PropTypes.object),
     findItemsByPage : PropTypes.func,
+    totalPagesRef : PropTypes.object
 };
