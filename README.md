@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Build Status](https://travis-ci.org/Aboulfadle/react-movies-api.svg?branch=master)](https://travis-ci.org/Aboulfadle/react-movies-api)
 
 ## Available Scripts
 
