@@ -5,8 +5,8 @@ import CommonTitle from "../components/common/CommonTitle";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMoviesByKeyword} from "../redux/actions/movies.action";
 import Loader from "../components/common/Loader";
+import PropTypes from "prop-types";
 import KeywordCardList from "../components/keyword/KaywordCardList";
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,7 +38,6 @@ const KeywordPage = ({keywordId, keywordName}) => {
     const { movies, totalPages, loading, totalResults } = useSelector(state => state.moviesStore);
 
     const handleKeywordPageChange = page => {
-        console.log(page)
         window.scrollTo({
             top: 0,
             left: 0,
@@ -79,6 +78,7 @@ const KeywordPage = ({keywordId, keywordName}) => {
 
 export default KeywordPage;
 
-KeywordPage.KeywordPage = {};
-
-KeywordPage.KeywordPage = {};
+KeywordPage.KeywordPage = {
+    keywordId: PropTypes.number,
+    keywordName: PropTypes.string,
+};

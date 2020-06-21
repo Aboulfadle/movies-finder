@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import {Link} from "@reach/router";
 
 
 const useStyles = makeStyles(theme => ({
@@ -12,28 +13,26 @@ const useStyles = makeStyles(theme => ({
     },
     actorReelName: {
         marginBottom: '-4px',
-        color: '#c62e2e',
     },
-    actorCharacterName: {
-
-    }
 }));
 
 const ActorCard = ({ actor }) => {
     const classes = useStyles();
 
-    const customSlice = (text, limit) => {
-        return text.length <= limit ? text : text.slice(0, limit-3) + '...';
+    const slice = (text) => {
+        return text.length <= 18 ? text : text.slice(0, 15) + '...';
     }
 
     return (
         <Card>
-            <Card.Img style={{height: '80px'}} variant="top" src={actor.profile_path ? `https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}` : "/images/not-found.png"} />
+            <Link to={`/actor/${actor.id}/${actor.name}`}>
+                <Card.Img style={{height: '80px'}} variant="top" src={actor.profile_path ? `https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}` : "/images/not-found.png"} />
+            </Link>
             <Card.Body className={classes.actorCardBody}>
                 <Card.Text className={classes.actorReelName}>
-                    {customSlice(actor.name, 18)}
+                    {slice(actor.name)}
                 </Card.Text>
-                <Card.Text>{customSlice(actor.character, 18)}</Card.Text>
+                <Card.Text>{slice(actor.character)}</Card.Text>
             </Card.Body>
         </Card>
     );

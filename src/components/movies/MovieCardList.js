@@ -15,11 +15,11 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const MovieCardList = ({movies}) => {
+const MovieCardList = ({movies, numberOfCols}) => {
     const classes = useStyles();
 
     return (
-        <GridList cols={4} className={classes.gridContainer} spacing={20}>
+        <GridList cols={numberOfCols} className={classes.gridContainer} spacing={20}>
             {movies.map(movie =>
                 <GridListTile className={classes.gridItem} key={movie.id}>
                     <MovieCard movie={movie} />
@@ -32,5 +32,10 @@ const MovieCardList = ({movies}) => {
 export default MovieCardList;
 
 MovieCardList.propTypes = {
-    movies : PropTypes.arrayOf(PropTypes.object)
+    movies : PropTypes.arrayOf(PropTypes.object),
+    numberOfCols : PropTypes.number
 };
+
+MovieCardList.defaultProps = {
+    numberOfCols : 4
+}

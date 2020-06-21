@@ -246,6 +246,11 @@ ul {
   background: transparent;
 }
 
+.mgb-bold-10 {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
 .view-details .btn-dark:hover {
   color: #000 !important;
   background-color: #fff !important;

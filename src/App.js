@@ -10,6 +10,7 @@ import Upcoming from "./containers/Upcoming";
 import PopularMovies from "./containers/PopularMovies";
 import WebFont from 'webfontloader';
 import KeywordPage from "./containers/KeywordPage";
+import ActorPage from "./containers/ActorPage";
 
 
 WebFont.load({
@@ -31,6 +32,7 @@ function App() {
                   <HomePage path={"/"} />
                   <CategoryPage path={"/category/:categoryId/:categoryName"} />
                   <KeywordPage path={"/keyword/:keywordId/:keywordName"} />
+                  <ActorPage path={"/actor/:actorId/:actorName"} />
                   <MoviePage path={"/movie/:movieId"} />
                   <TopRated path={"/top_rated"} />
                   <Upcoming query_variable={"upcoming"} path={"/upcoming"} />
