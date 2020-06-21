@@ -40,7 +40,6 @@ export function fetchMoviesByGenre(page = 1, categoryId = "") {
 }
 
 export function fetchMoviesByKeyword(page = 1, keywordId = 0, totalPagesRef) {
-    console.log('keywordId = ' + keywordId)
     return dispatch => {
         dispatch({
             type: FETCH_MOVIES_BY_KEYWORD,

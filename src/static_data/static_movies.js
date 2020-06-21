@@ -10,7 +10,7 @@ const static_movies = [
         id: 2,
         title: "Sherlock holmes",
         poster_path: "/images/sherlock-holmes.jpg",
-        trailer_key: "ue80QwXMRHg",
+        trailer_key: "Egcx63-FfTE",
         overview: 'Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.'
     },
     {
@@ -31,7 +31,7 @@ const static_movies = [
         id: 5,
         title: "The godfather",
         poster_path: "/images/the-godfather.jpg",
-        trailer_key: "vlDzYIIOYmM",
+        trailer_key: "sY1S34973zA",
         overview: 'Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.'
     },
     {

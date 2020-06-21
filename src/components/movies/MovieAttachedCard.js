@@ -2,6 +2,7 @@ import React from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Button} from "react-bootstrap";
 import {Link} from "@reach/router";
+import slice from "../../utils/stringUtils";
 
 const useStyles = makeStyles(theme => ({
     trailerImageContainer: {
@@ -26,8 +27,8 @@ const MovieAttachedCard = ({movie}) => {
                         `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
                         : "/images/not-found.png"} alt={movie.title} />
                 <div className={"trailer-image-overlay"}>
-                    <p className={"overlay-title"}>{movie.title}</p>
-                    <p className={"overlay-description"}>Lots and lots of others pictures ever made, industry itself</p>
+                    <p className={"overlay-title"}>{slice(movie.title, 25)}</p>
+                    <p className={"overlay-description"}>{slice(movie.overview, 65)}</p>
                     <Button variant={"danger"}>Details</Button>
                 </div>
             </div>

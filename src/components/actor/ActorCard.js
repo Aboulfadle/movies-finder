@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import {Link} from "@reach/router";
+import slice from "../../utils/stringUtils";
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,10 +20,6 @@ const useStyles = makeStyles(theme => ({
 const ActorCard = ({ actor }) => {
     const classes = useStyles();
 
-    const slice = (text) => {
-        return text.length <= 18 ? text : text.slice(0, 15) + '...';
-    }
-
     return (
         <Card>
             <Link to={`/actor/${actor.id}/${actor.name}`}>
@@ -30,9 +27,9 @@ const ActorCard = ({ actor }) => {
             </Link>
             <Card.Body className={classes.actorCardBody}>
                 <Card.Text className={classes.actorReelName}>
-                    {slice(actor.name)}
+                    {slice(actor.name, 18)}
                 </Card.Text>
-                <Card.Text>{slice(actor.character)}</Card.Text>
+                <Card.Text>{slice(actor.character, 18)}</Card.Text>
             </Card.Body>
         </Card>
     );

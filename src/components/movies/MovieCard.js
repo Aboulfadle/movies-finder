@@ -4,6 +4,7 @@ import {Button, Card} from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import {Link} from "@reach/router";
 import PropTypes from "prop-types";
+import slice from "../../utils/stringUtils";
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,15 +50,9 @@ const MovieCard = ({movie}) => {
                 movie.backdrop_path || movie.backdrop_path ?
                     `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
                     : "/images/not-found.png"}/>
-            <Card.Title className={classes.cardTitle}>
-                {
-                    movie.title.length < 23 ?
-                        movie.title :
-                        movie.title.slice(0, 20) + "..."
-                }
-            </Card.Title>
+            <Card.Title className={classes.cardTitle}>{slice(movie.title, 23)}</Card.Title>
             <Card.Text className={classes.cardText}>
-                Some quick example text to build on the card title, build on the card title build on the card title
+                {slice(movie.overview, 100)}
             </Card.Text>
 
             <ReactStars edit={false}

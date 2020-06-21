@@ -39,7 +39,6 @@ const CategoryPage = ({categoryId, categoryName}) => {
     const { movies, totalPages, loading } = useSelector(state => state.moviesStore);
 
     const handleCategoryPageChange = page => {
-        console.log(page)
         window.scrollTo({
             top: 0,
             left: 0,

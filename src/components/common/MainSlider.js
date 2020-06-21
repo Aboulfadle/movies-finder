@@ -3,6 +3,7 @@ import Image from "react-bootstrap/Image";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Carousel from "react-bootstrap/Carousel";
 import PropTypes from 'prop-types';
+import slice from "../../utils/stringUtils";
 
 const useStyles = makeStyles(theme => ({
     mainImages: {
@@ -42,7 +43,7 @@ const MainSlider = ({movies}) => {
                                 <Image src={movie.poster_path} style={{border: 'none', width: '100%', height: '100%'}}/>
                                 <p className={`text-center ${classes.mainImagesCard}`}>
                                     <label className={"main-card-image-title"}>{movie.title}</label>
-                                    <label className={classes.mainImagesCardText}>{movie.overview.length <= 114 ? movie.overview : movie.overview.slice(0, 111) + '...'}</label>
+                                    <label className={classes.mainImagesCardText}>{slice(movie.overview, 114)}</label>
                                 </p>
                             </div>
                         </Carousel.Item>

@@ -44,7 +44,7 @@ const HomePage = () => {
                 <GridList cellHeight={210} cols={4} spacing={0}>
                     {static_movies.map((movie) => (
                         <GridListTile key={movie.id}>
-                            <TrailerCard title={movie.title} backdrop_path={movie.poster_path} trailer_key={movie.trailer_key} />
+                            <TrailerCard movie={movie} />
                         </GridListTile>
                     ))}
                 </GridList>

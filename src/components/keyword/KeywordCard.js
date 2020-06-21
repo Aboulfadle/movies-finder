@@ -3,6 +3,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Card, Col, Row} from "react-bootstrap";
 import {Link} from "@reach/router";
 import PropTypes from "prop-types";
+import slice from "../../utils/stringUtils";
 
 
 const useStyles = makeStyles(theme => ({
@@ -55,13 +56,11 @@ const KeywordCard = ({movie}) => {
                 <Col>
                     <Card.Title className={classes.cardTitle}>
                         {
-                            movie.title.length < 23 ?
-                                movie.title :
-                                movie.title.slice(0, 20) + "..."
+                            slice(movie.title, 23)
                         }
                     </Card.Title>
                     <Card.Text className={classes.cardText}>
-                        {movie.overview.length <= 215? movie.overview : movie.overview.slice(0, 212) + "..."}
+                        {slice(movie.overview, 215)}
                     </Card.Text>
                 </Col>
             </Row>

@@ -3,6 +3,7 @@ import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import PropTypes from "prop-types";
 import Trailer from "./Trailer";
+import slice from "../../utils/stringUtils";
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TrailerCard = ({title, backdrop_path, trailer_key}) => {
+const TrailerCard = ({movie}) => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -25,21 +26,24 @@ const TrailerCard = ({title, backdrop_path, trailer_key}) => {
 
     return (
         <div className={`trailer-image-container ${classes.trailerImageContainer}`}>
-            <img className={classes.trailerImage} src={backdrop_path} alt={backdrop_path} />
+            <img className={classes.trailerImage} src={movie.poster_path} alt={movie.poster_path} />
             <div className={"trailer-image-overlay"} onClick={handleShow}>
-                <p className={"overlay-title"}>{title}</p>
-                <p className={"overlay-description"}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                <p className={"overlay-title"}>{movie.title}</p>
+                <p className={"overlay-description"}>{slice(movie.overview, 120)}</p>
                 <PlayCircleOutlineIcon style={{color: '#dc3545', fontSize: '35px'}} />
             </div>
-            <Trailer show={show} trailer_key={trailer_key} handleClose={handleClose}/>
+            <Trailer show={show} trailer_key={movie.trailer_key} handleClose={handleClose}/>
         </div>
     );
 }
 
 TrailerCard.propTypes = {
-    title : PropTypes.string,
-    backdrop_path : PropTypes.string,
-    trailer_path : PropTypes.string
+    movie: PropTypes.shape({
+        title : PropTypes.string,
+        overview : PropTypes.string,
+        poster_path : PropTypes.string,
+        trailer_key : PropTypes.string
+    })
 };
 
 export default TrailerCard;

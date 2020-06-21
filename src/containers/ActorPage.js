@@ -58,7 +58,6 @@ const ActorPage = ({actorId}) => {
     useEffect(() => {
         dispatch(fetchActorDetails(actorId));
         dispatch(fetchActorPopularMovies(actorId));
-        console.log(actor)
     }, [dispatch, actorId]);
 
     return (

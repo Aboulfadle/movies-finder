@@ -3,7 +3,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import CloseIcon from '@material-ui/icons/Close';
 import {Drawer} from "@material-ui/core/";
 import Autocomplete from 'react-autocomplete';
-import {quickSearch} from "../../utils/SearchUtils";
+import {quickSearch} from "../../utils/searchUtils";
 import {Link} from "@reach/router";
 import PropTypes from "prop-types";
 
