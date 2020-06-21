@@ -4,7 +4,7 @@ import {
     FETCH_MOVIES_BY_CATEGORY, FETCH_MOVIES_BY_KEYWORD,
 } from "../actionsType";
 
-export function fetchMovies(page = 1, pathParam = "popular", totalPagesRef) {
+export function fetchMovies(page, pathParam, totalPagesRef) {
     const pageParam = {
         params: {
             page: page
@@ -23,7 +23,7 @@ export function fetchMovies(page = 1, pathParam = "popular", totalPagesRef) {
     };
 }
 
-export function fetchMoviesByGenre(page = 1, categoryId = "") {
+export function fetchMoviesByGenre(page, categoryId) {
     return dispatch => {
         dispatch({
             type: FETCH_MOVIES_BY_CATEGORY,
@@ -39,7 +39,7 @@ export function fetchMoviesByGenre(page = 1, categoryId = "") {
     };
 }
 
-export function fetchMoviesByKeyword(page = 1, keywordId = 0, totalPagesRef) {
+export function fetchMoviesByKeyword(page, keywordId, totalPagesRef) {
     return dispatch => {
         dispatch({
             type: FETCH_MOVIES_BY_KEYWORD,

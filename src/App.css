@@ -63,12 +63,18 @@ ul {
 }
 
 .autocomplete-wrapper input {
-  border: none;
   margin-bottom: 5px;
   padding: 12px 15px;
   font-size: 14px;
   box-sizing: border-box;
   width: 100%;
+  color: white;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #dc3545;
 }
 
 .autocomplete-wrapper input:focus {
@@ -112,16 +118,6 @@ ul {
 
 .autocomplete-wrapper input::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
-}
-
-.autocomplete-wrapper input{
-  color: white;
-  background: none;
-  box-shadow: none;
-  outline: none;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid #dc3545;
 }
 
 .attached-grid {

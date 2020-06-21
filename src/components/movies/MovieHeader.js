@@ -58,7 +58,7 @@ const MovieHeader = ({movie, trailer}) => {
             <MovieTopHeader movie={movie} />
             <div className={"header-background-container"}>
                 <div className={classes.movieHeaderContainer}>
-                    <Image className={classes.movieMainImage} src={movie.backdrop_path || movie.backdrop_path ? `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}` : "/images/not-found.png"}/>
+                    <Image className={classes.movieMainImage} src={movie.backdrop_path || movie.poster_path ? `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}` : "/images/not-found.png"}/>
                     <div className={"movie-header-infos"}>
                         <h1>{movie.title}</h1>
                         <label>{movie.release_date} 2h 11m</label>

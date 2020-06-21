@@ -1,34 +1,36 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {Link} from "@reach/router";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
+import PropTypes from "prop-types";
+import KeywordCard from "./KeywordCard";
 
+
+const useStyles = makeStyles(theme => ({
+    gridContainer: {
+        width: '100%'
+    },
+    gridItem: {
+        height: 'auto !important'
+    },
+}))
 
 const KeywordCardList = ({movies}) => {
+    const classes = useStyles();
 
     return (
-        <div className="keywords right_column">
-            <GridList>
-                {
-                    movies.map((movie) =>
-                        <GridListTile key={movie.id}>
-                            <Link to={`/keyword/${movie.id}-${movie.name}`}>{movie.name}</Link>
-                        </GridListTile>
-                    )
-                }
-            </GridList>
-        </div>
+        <GridList cols={2} className={classes.gridContainer} spacing={15}>
+            {movies.map(movie =>
+                <GridListTile className={classes.gridItem} key={movie.id}>
+                    <KeywordCard movie={movie} />
+                </GridListTile>
+            )}
+        </GridList>
     );
 }
 
 export default KeywordCardList;
 
 KeywordCardList.propTypes = {
-    keywords : PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string
-        })
-    )
+    movies : PropTypes.arrayOf(PropTypes.object)
 };

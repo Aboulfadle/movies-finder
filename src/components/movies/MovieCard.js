@@ -47,7 +47,7 @@ const MovieCard = ({movie}) => {
     return (
         <Card className={`view-details ${classes.grid}`}>
             <Card.Img variant="top" style={{ height: '220px' }} src={
-                movie.backdrop_path || movie.backdrop_path ?
+                movie.backdrop_path || movie.poster_path ?
                     `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
                     : "/images/not-found.png"}/>
             <Card.Title className={classes.cardTitle}>{slice(movie.title, 23)}</Card.Title>

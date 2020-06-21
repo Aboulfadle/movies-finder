@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchMoviesByKeyword} from "../redux/actions/movies.action";
 import Loader from "../components/common/Loader";
 import PropTypes from "prop-types";
-import KeywordCardList from "../components/keyword/KaywordCardList";
+import KeywordCardList from "../components/keyword/KeywordCardList";
 
 const useStyles = makeStyles(theme => ({
     root: {

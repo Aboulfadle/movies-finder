@@ -49,7 +49,7 @@ const KeywordCard = ({movie}) => {
             <Row className={`view-details ${classes.grid}`}>
                 <Col>
                     <Card.Img variant="top" style={{ height: '200px' }} src={
-                        movie.backdrop_path || movie.backdrop_path ?
+                        movie.backdrop_path || movie.poster_path ?
                             `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
                             : "/images/not-found.png"}/>
                 </Col>

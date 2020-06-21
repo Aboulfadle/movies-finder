@@ -23,7 +23,7 @@ const MovieAttachedCard = ({movie}) => {
         <Link to={`/movie/${movie.id}`} key={movie.id}>
             <div className={`trailer-image-container ${classes.trailerImageContainer}`}>
                 <img className={classes.trailerImage} src={
-                    movie.backdrop_path || movie.backdrop_path ?
+                    movie.backdrop_path || movie.poster_path ?
                         `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}`
                         : "/images/not-found.png"} alt={movie.title} />
                 <div className={"trailer-image-overlay"}>

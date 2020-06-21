@@ -57,8 +57,8 @@ const QuickSearch = ({openQuickSearch, quickSearchHandler}) => {
     const onChangeHandler = async (event, value) => {
         setSearchTextValue(value);
         if (value) {
-            const movies = await quickSearch(value);
-            setMovies(movies ? movies : []);
+            const results = await quickSearch(value);
+            setMovies(results ? results : []);
         }
         else {
             setMovies([])
