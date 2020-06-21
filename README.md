@@ -1,11 +1,8 @@
 [![Build Status](https://travis-ci.org/Aboulfadle/react-movies-api.svg?branch=master)](https://travis-ci.org/Aboulfadle/react-movies-api)
-
-
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=security_rating)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=coverage)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Aboulfadle_react-movies-api&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Aboulfadle_react-movies-api)
