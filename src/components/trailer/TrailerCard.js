@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Modal} from "react-bootstrap";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import PropTypes from "prop-types";
+import Trailer from "./Trailer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Trailer = ({title, backdrop_path, trailer_path}) => {
+const TrailerCard = ({title, backdrop_path, trailer_key}) => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -28,24 +28,18 @@ const Trailer = ({title, backdrop_path, trailer_path}) => {
             <img className={classes.trailerImage} src={backdrop_path} alt={backdrop_path} />
             <div className={"trailer-image-overlay"} onClick={handleShow}>
                 <p className={"overlay-title"}>{title}</p>
-                <p className={"overlay-description"}>Lots and lots of others pictures ever made, industry itself</p>
+                <p className={"overlay-description"}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
                 <PlayCircleOutlineIcon style={{color: '#dc3545', fontSize: '35px'}} />
             </div>
-            <div className={"trailer-container"}>
-                <Modal show={show} onHide={handleClose} size="xl" aria-labelledby="contained-modal-title-vcenter" centered>
-                    <div className="embed-responsive embed-responsive-16by9">
-                        <iframe className="embed-responsive-item" src={trailer_path} allowFullScreen title={trailer_path}/>
-                    </div>
-                </Modal>
-            </div>
+            <Trailer show={show} trailer_key={trailer_key} handleClose={handleClose}/>
         </div>
     );
 }
 
-Trailer.propTypes = {
+TrailerCard.propTypes = {
     title : PropTypes.string,
     backdrop_path : PropTypes.string,
     trailer_path : PropTypes.string
 };
 
-export default Trailer;
+export default TrailerCard;

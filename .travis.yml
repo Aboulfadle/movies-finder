@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - node
+env:
+  global:
+    - NODE_ENV=test
+after_success: npm run coverage
+cache:
+  directories:
+    - node_modules

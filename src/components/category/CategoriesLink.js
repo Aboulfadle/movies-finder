@@ -5,7 +5,7 @@ import {List, Drawer, ListItem, ListItemText} from "@material-ui/core/";
 import {Link} from "@reach/router";
 import PropTypes from "prop-types";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCategories} from "../redux/actions/categories.action";
+import {fetchCategories} from "../../redux/actions/categories.action";
 
 
 const useStyles = makeStyles(theme => ({

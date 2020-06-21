@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         bottom: '80px',
         left: '50px',
-        maxWidth: '400px',
+        maxWidth: '350px',
+        fontFamily: 'Titillium Web',
         paddingBottom: '10px',
         color: 'white',
         fontWeight: 'bold',
@@ -22,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     mainImagesCardText: {
         fontSize: '16px',
         paddingLeft: '10px',
+        fontWeight: 'normal',
         paddingRight: '10px',
         textAlign: 'left',
         paddingTop: '10px'
@@ -40,7 +42,7 @@ const MainSlider = ({movies}) => {
                                 <Image src={movie.poster_path} style={{border: 'none', width: '100%', height: '100%'}}/>
                                 <p className={`text-center ${classes.mainImagesCard}`}>
                                     <label className={"main-card-image-title"}>{movie.title}</label>
-                                    <label className={classes.mainImagesCardText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</label>
+                                    <label className={classes.mainImagesCardText}>{movie.overview.length <= 114 ? movie.overview : movie.overview.slice(0, 111) + '...'}</label>
                                 </p>
                             </div>
                         </Carousel.Item>

@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import InfinityScroll from "../components/InfinityScroll";
+import InfinityScroll from "../components/category/InfinityScroll";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../redux/actions/movies.action";
 

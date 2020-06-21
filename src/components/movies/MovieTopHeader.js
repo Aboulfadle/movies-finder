@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 const useStyles = makeStyles(theme => ({
     topHeaderContainer: {
         display: 'flex',
+        fontFamily: 'Titillium Web',
         height: '60px',
         padding: '10px 50px',
         textAlign: 'center'

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     actorCardContainer: {
-        width: '11.6% !important',
+        width: '29% !important',
         height: 'auto !important'
     }
 }));
@@ -24,9 +24,9 @@ const ActorCardList = ({actors}) => {
     const classes = useStyles();
 
     return (
-        <GridList cols={8} spacing={0} className={classes.actorsContainer}>
+        <GridList cols={3} spacing={0} className={classes.actorsContainer}>
             {
-                actors.slice(0, 8).map(actor =>
+                actors.slice(0, 18).map(actor =>
                     <GridListTile className={classes.actorCardContainer} key={actor.id}>
                         <ActorCard actor={actor} />
                     </GridListTile>

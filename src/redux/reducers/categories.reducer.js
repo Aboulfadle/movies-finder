@@ -2,6 +2,7 @@ import {FETCH_CATEGORY} from "../actionsType";
 
 const initialState = {
     categories: [],
+    loading: false
 };
 
 export default (state = initialState, action = {}) => {
@@ -9,13 +10,15 @@ export default (state = initialState, action = {}) => {
         case `${FETCH_CATEGORY}_PENDING`: {
             return {
                 ...state,
+                loading: true,
             };
         }
 
         case `${FETCH_CATEGORY}_FULFILLED`: {
             return {
                 ...state,
-                categories: action.payload.data.genres
+                categories: action.payload.data.genres,
+                loading: false
             };
         }
 

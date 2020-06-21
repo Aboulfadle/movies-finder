@@ -3,12 +3,13 @@ import './App.css';
 import Header from "./containers/Header";
 import HomePage from "./containers/HomePage";
 import {Router} from "@reach/router";
-import Category from "./containers/Category";
+import CategoryPage from "./containers/CategoryPage";
 import MoviePage from "./containers/MoviePage";
 import TopRated from "./containers/TopRated";
 import Upcoming from "./containers/Upcoming";
 import PopularMovies from "./containers/PopularMovies";
 import WebFont from 'webfontloader';
+import KeywordPage from "./containers/KeywordPage";
 
 
 WebFont.load({
@@ -28,7 +29,8 @@ function App() {
           <div className="siteContent">
               <Router>
                   <HomePage path={"/"} />
-                  <Category path={"/category/:categoryId/:categoryName"} />
+                  <CategoryPage path={"/category/:categoryId/:categoryName"} />
+                  <KeywordPage path={"/keyword/:keywordId/:keywordName"} />
                   <MoviePage path={"/movie/:movieId"} />
                   <TopRated path={"/top_rated"} />
                   <Upcoming query_variable={"upcoming"} path={"/upcoming"} />

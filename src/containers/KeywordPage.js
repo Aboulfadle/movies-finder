@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import MovieCardList from "../components/MovieCardList";
 import Pagination from "@material-ui/lab/Pagination";
-import CommonTitle from "../components/CommonTitle";
+import CommonTitle from "../components/common/CommonTitle";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchMoviesByGenre} from "../redux/actions/movies.action";
+import {fetchMoviesByKeyword} from "../redux/actions/movies.action";
+import Loader from "../components/common/Loader";
+import KeywordCardList from "../components/keyword/KaywordCardList";
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,51 +31,54 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Category = ({categoryId, categoryName}) => {
+const KeywordPage = ({keywordId, keywordName}) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const { movies, totalPages } = useSelector(state => state.moviesStore);
+    const { movies, totalPages, loading, totalResults } = useSelector(state => state.moviesStore);
 
-    const handleCategoryPageChange = page => {
+    const handleKeywordPageChange = page => {
+        console.log(page)
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: 'smooth'
         });
-        findItemsByCategory(page, categoryId);
+        dispatch(fetchMoviesByKeyword(page, keywordId));
     };
 
     useEffect(() => {
-        findItemsByCategory(1, categoryId);
-    }, [dispatch, categoryId]);
-
-    const findItemsByCategory = (page, categoryId) => {
-        dispatch(fetchMoviesByGenre(page, categoryId));
-    }
+        dispatch(fetchMoviesByKeyword(1, keywordId));
+    }, [dispatch, keywordId]);
 
     return (
         <div>
-            <CommonTitle title={`${categoryName} movies`} />
+            { loading ?
+                <Loader />
+                :
+                <>
+                    <CommonTitle title={`#${keywordName} (${totalResults} movies)`} />
+                    <div className={classes.root}>
+                        <div className={classes.rootGridContainer}>
+                            <KeywordCardList movies={movies} />
+                        </div>
+                    </div>
+                </>
+            }
             <div className={classes.root}>
-                <div className={classes.rootGridContainer}>
-                    <MovieCardList movies={movies} />
-                </div>
-
                 <div className={`pagination ${classes.pagination}`}>
                     <Pagination
                         count={totalPages}
                         variant="outlined"
                         shape="rounded"
-                        onChange={(e, page) => handleCategoryPageChange(page)}/>
+                        onChange={(e, page) => handleKeywordPageChange(page)}/>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Category;
+export default KeywordPage;
 
-Category.propTypes = {};
+KeywordPage.KeywordPage = {};
 
-Category.defaultProps = {};
+KeywordPage.KeywordPage = {};

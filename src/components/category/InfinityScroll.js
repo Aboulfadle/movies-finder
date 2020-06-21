@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import MovieAttachedCardList from "./MovieAttachedCardList";
+import MovieAttachedCardList from "../movies/MovieAttachedCardList";
 import PropTypes from "prop-types";
 
 
@@ -8,6 +8,13 @@ const InfinityScroll = ({movies, findItemsByPage, totalPagesRef}) => {
     let page = 1;
     const containerRef = useRef();
     const bottomRef = useRef();
+
+    const scrollCallBack = (entries) => {
+        if (entries[0].isIntersecting && totalPagesRef.current && page <= totalPagesRef.current) {
+            page = page + 1;
+            findItemsByPage(page);
+        }
+    };
 
     useEffect(() => {
         findItemsByPage(page);
@@ -22,13 +29,6 @@ const InfinityScroll = ({movies, findItemsByPage, totalPagesRef}) => {
         }
 
     }, []);
-
-    const scrollCallBack = (entries) => {
-        if (entries[0].isIntersecting && totalPagesRef.current && page <= totalPagesRef.current) {
-            page = page + 1;
-            findItemsByPage(page);
-        }
-    };
 
     return (
         <div className={"attached-grid"}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Image} from "react-bootstrap";
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import MovieTopHeader from "./MovieTopHeader";
+import Trailer from "../trailer/Trailer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,9 +43,15 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const MovieHeader = ({movie}) => {
+const MovieHeader = ({movie, trailer}) => {
 
     const classes = useStyles();
+    const [show, setShow] = useState(false);
+    const handleShow = (event) => {
+        event.preventDefault();
+        setShow(true);
+    }
+    const handleClose = () => setShow(false);
 
     return (
         <>
@@ -54,9 +61,16 @@ const MovieHeader = ({movie}) => {
                     <Image className={classes.movieMainImage} src={movie.backdrop_path || movie.backdrop_path ? `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path ? movie.backdrop_path : movie.poster_path}` : "/images/not-found.png"}/>
                     <div className={"movie-header-infos"}>
                         <h1>{movie.title}</h1>
-                        <label>11/27/2019 (US) 2h 11m</label>
+                        <label>{movie.release_date} 2h 11m</label>
                         <br/>
-                        <label style={{fontSize: '14px'}}><PlayArrowIcon className={classes.whiteColor} /> Play Trailer</label>
+                        {
+                            trailer && trailer.key &&
+                            <a href={"javascript;"} className={"trailer_player"} onClick={handleShow}>
+                                <PlayArrowIcon className={classes.whiteColor} />
+                                Play Trailer
+                            </a>
+                        }
+                        <Trailer handleClose={handleClose} trailer_key={trailer.key} show={show} />
                         <div className={classes.categoriesContainer}>
                             {
                                 movie.genres && movie.genres.map((genre) =>

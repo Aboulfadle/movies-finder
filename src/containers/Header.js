@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Button, Nav, Navbar} from "react-bootstrap";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import HdSharp from "@material-ui/icons/HdSharp";
-import QuickSearch from "../components/QuickSearch";
-import CategoriesLink from "../components/CategoriesLink";
+import QuickSearch from "../components/common/QuickSearch";
+import CategoriesLink from "../components/category/CategoriesLink";
 import {Link} from "@reach/router";
 
 
